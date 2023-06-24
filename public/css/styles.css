@@ -195,6 +195,15 @@ float:right;
     #detailspage img{
       width:10em;
      }
+     #detail_title{
+      font-size:1em;
+     }
+     #detailspage{
+      grid-gap:0.5rem;
+    }
+    .rightcontent{
+      font-size: 1em;
+    }
 }
 
 /*Mobile View is the default*/
