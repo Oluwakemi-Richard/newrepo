@@ -20,11 +20,15 @@ body{
 #nav li{
   display:inline;
   float:inline-end;
-  color: #D0E3FF;
+  /* color: #D0E3FF; */
   text-align: center;
   padding: 1% 5%;
   text-decoration: none;
   font-size: 0.7em;
+}
+#nav a {
+  color: #D0E3FF;
+  text-decoration: none;
 }
 img {
   max-width: 100%;
@@ -125,6 +129,38 @@ float:right;
   padding:2em;
 } 
 
+/*week 3*/
+#inv-display{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 2rem;
+  max-width: 100%;
+}
+#inv-display li{
+ list-style-type: none;
+ border: 2px solid #e7e7e7;
+ border-radius: 4px;
+ padding: .5rem;
+}
+#inv-display img{
+  height:150px;
+}
+#inv-display hr{
+  border: 1px solid black;
+}
+#detailspage{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+#detailspage img{
+ width:12em;
+ height: 10em;
+}
+
+ .cardetails:nth-child(even) {background: #CCC}
+ .cardetails:nth-child(odd) {background: #FFF}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 568px) {
  
@@ -137,6 +173,9 @@ float:right;
     /* .bottom1{
       display: block;
     } */
+    #inv-display{
+      display: block;
+    }
     .bottom1 img{
       padding:0.2em 2em;
       width:3em;
@@ -153,6 +192,9 @@ float:right;
       font-size: 0.5em;
       padding: 0.5% 3%;
     }
+    #detailspage img{
+      width:10em;
+     }
 }
 
 /*Mobile View is the default*/
@@ -161,6 +203,9 @@ float:right;
   .bottom1 img{
       padding:0.4em 6em;
     }
+    #detailspage img{
+      width:14em;
+     }
 }
 
 /* Large devices*/

@@ -13,7 +13,7 @@ node_modules
 .env
 
 # .DS_Store is only for Mac users
-**/.DS_Store
+#**/.DS_Store
 
 #pnpm yaml should not be tracked
 pnpm-lock.yaml
