@@ -204,6 +204,9 @@ float:right;
     .rightcontent{
       font-size: 1em;
     }
+    #detailspage{
+      display:block;
+    }
 }
 
 /*Mobile View is the default*/

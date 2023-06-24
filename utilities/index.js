@@ -78,7 +78,7 @@ Util.carDetail = async function(vehicle){
     grid += '<div class="cardetails">'
     grid += '<p>' + '<b>Year: </b>' + vehicle.inv_year + '</p>'
     grid += '<p>' +'<b>Color: </b>' + vehicle.inv_color + '</p>'
-    grid += '<p>' +'<b>Miles: </b>' + vehicle.inv_miles + '</p>'
+    grid += '<p>' +'<b>Mileage: </b>' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles)+ '</p>'
     grid += '<span>'+'<b>Price: </b>' + '$'
     + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
     grid += '</div>'
