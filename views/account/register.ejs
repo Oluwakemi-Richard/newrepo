@@ -1,0 +1,38 @@
+<h1>
+    <%= title %>
+</h1>
+<form action="/account/register" method="post">
+    <div class="login-container">
+
+        <label for="account_firstname"><b>First Name:</b></label>
+        <input type="text" name="account_firstname" required>
+    
+        <label for="account_lastname"><b>Last Name:</b></label>
+        <input type="text" name="account_lastname" required>
+
+        <label for="account_email"><b>Email Address:</b></label>
+        <input type="email" name="account_email" required>
+  
+        <label for="account_password"><b>Password:</b></label>
+        <input type="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+          
+        <button type="submit">Register</button>
+      <!-- <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label> -->
+      <span class="form_text">Already have an account? <a href="./login">Log in</a></span>
+    </div>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+  
+    <!-- <div class="fogotpw" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>s
+    </div> -->
+  </form>
+  <%- messages() %>

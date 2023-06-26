@@ -1,0 +1,24 @@
+<h1>
+    <%= title %>
+</h1>
+<%- messages() %>
+<form action="/action_page.php" method="post">
+    <div class="login-container">
+      <label for="account_email"><b>Email Address:</b></label>
+      <input type="email" name="account_email" required>
+  
+      <label for="account_password"><b>Password:</b></label>
+      <input type="password" name="account_password" required>
+          
+      <button type="submit">Login</button>
+      <!-- <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label> -->
+      <span class="form_text">No account? <a href="./register">Sign-up</a></span>
+    </div>
+  
+    <!-- <div class="fogotpw" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div> -->
+  </form>
