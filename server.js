@@ -57,7 +57,9 @@ app.use(require("./routes/static"))
 // app.get("/", function(req, res){
 //   res.render("index",{title:"HomePage"})
 // })
-app.get("/", baseController.buildHome)
+// app.get("/", baseController.buildHome)
+// Index route
+app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
@@ -83,7 +85,7 @@ app.use(async (err, req, res, next) => {
 })
 
 // Index route
-app.get("/", utilities.handleErrors(baseController.buildHome))
+// app.get("/", utilities.handleErrors(baseController.buildHome))
 
 
 /* ***********************

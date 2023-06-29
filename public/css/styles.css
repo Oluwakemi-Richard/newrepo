@@ -164,6 +164,27 @@ float:right;
  .cardetails:nth-child(even) {background: #CCC}
  .cardetails:nth-child(odd) {background: #FFF}
 
+ .auth-forms input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.auth-forms button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+}
+
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 568px) {
  

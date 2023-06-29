@@ -2,10 +2,12 @@
     <%= title %>
 </h1>
 <form action="/account/register" method="post">
-    <div class="login-container">
+    <div class="auth-forms">
 
+      <fieldset>
         <label for="account_firstname"><b>First Name:</b></label>
-        <input type="text" name="account_firstname" required>
+        <!-- <input type="text" name="account_firstname" required> -->
+        <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
     
         <label for="account_lastname"><b>Last Name:</b></label>
         <input type="text" name="account_lastname" required>
@@ -15,8 +17,9 @@
   
         <label for="account_password"><b>Password:</b></label>
         <input type="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-          
+        <div><i>Passwords must contain at least 12 characters, and include 1 capital letter, 1 number and 1 special character</i></div>
         <button type="submit">Register</button>
+      </fieldset>  
       <!-- <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label> -->
