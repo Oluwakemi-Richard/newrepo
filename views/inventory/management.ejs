@@ -1,0 +1,15 @@
+<h1><%= title %></h1>
+
+<% if (flash) { %>
+  <% if (flash.notice) { %>
+    <ul class="notice">
+      <% flash.notice.forEach(msg => { %>
+        <li><%= msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+<% } %>
+<div class="container">
+  <span><a href="/inv/add-classification">Add Classification</a></span><br>
+  <span><a href="/inv/add-inventory">Add Inventory</a></span>
+</div>

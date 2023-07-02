@@ -89,6 +89,27 @@ Util.carDetail = async function(vehicle){
   }
   return grid
 }
+/* **************************************
+* Inventory list
+* ************************************ */
+Util.getInv = async function (req, res, next) {
+  let data = await invModel.getInventory();
+  let list = "<ul>"
+  data.rows.forEach((row) => {
+    list += "<li>"
+    list +=
+      '<a href="/inv/type/' +
+      row.classification_id +
+      '" title="See our inventory of ' +
+      row.classification_name +
+      ' vehicles">' +
+      row.classification_name +
+      "</a>"
+    list += "</li>"
+  })
+  list += "</ul>"
+  return list
+}
 
 /* ****************************************
  * Middleware For Handling Errors

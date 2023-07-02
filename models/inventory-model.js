@@ -39,5 +39,21 @@ async function getInventoryByCarId(carId) {
     console.error("getclassificationsbyid error " + error)
   }
 }
+async function addClassName(classification_name) {
+  try {
+    const data = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *";
+    return await pool.query(data, [classification_name]);
+  } catch (error) {
+    return error.message
+  }
+}
+async function addInventory(inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id){
+  const data = "INSERT INTO inventory (inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *";
+  return await pool.query(data, [inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id]);
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByCarId}
+async function getInventory() {
+  return await pool.query("SELECT * FROM public.inventory")
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByCarId,addClassName,addInventory,getInventory}

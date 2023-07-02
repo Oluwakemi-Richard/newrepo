@@ -1,0 +1,32 @@
+<h1><%= title %></h1>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+
+  <% if (flash) { %>
+    <% if (flash.notice) { %>
+      <ul class="notice">
+        <% flash.notice.forEach(msg => { %>
+          <li><%= msg %></li>
+        <%  }) %>
+      </ul>
+    <% } %>
+  <% } %>
+
+
+<form action="/inv/add-classification" method="POST">
+    <div class="auth-forms">
+        <fieldset>
+            <label for="classification_name">Classification Name:</label>
+            <input type="text" id="classification_name" name="classification_name" required pattern="[a-zA-Z0-9]+" value="<%= locals.classification_name %>">
+            <div><i>Classification names cannot contain spaces or special characters. Only letters or numbers are allowed.</i></div>
+        </fieldset>
+    <button type="submit">Add Class</button>
+</div>
+</form>
