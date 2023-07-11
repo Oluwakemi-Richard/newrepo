@@ -110,7 +110,7 @@ async function accountLogin(req, res) {
 async function buildAccManagement(req, res, next) {
   let nav = await utilities.getNav()
   res.render("account/account-management", {
-    title: "LoggedIn",
+    title: "Account Management",
     nav,
     flash: req.flash(),
     errors: null,
