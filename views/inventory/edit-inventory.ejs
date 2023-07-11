@@ -1,0 +1,84 @@
+<h1><%= title %></h1>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+
+  <% if (flash) { %>
+    <% if (flash.notice) { %>
+      <ul class="notice">
+        <% flash.notice.forEach(msg => { %>
+          <li><%= msg %></li>
+        <%  }) %>
+      </ul>
+    <% } %>
+  <% } %>
+
+
+
+<form id="updateForm" action="/inv/edit-inventory" method="POST" onsubmit="return validateForm()">
+
+  <div>
+    <label for="make">Make:</label>
+    <input type="text" id="make" name="inv_make" required value="<%= locals.inv_make %>">
+  </div>
+  <div>
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="inv_model" required value="<%= locals.inv_model %>">
+  </div>
+  <div>
+    <label for="year">Year:</label>
+    <input type="number" id="year" name="inv_year" required value="<%= locals.inv_year %>">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" name="inv_description" required><%= locals.inv_description %></textarea>
+  </div>
+  <div>
+    <label for="image">Image:</label>
+    <input type="text" id="image" name="inv_image" required value="<%= locals.inv_image %>">
+  </div>
+  <div>
+    <label for="thumbnail">Thumbnail:</label>
+    <input type="text" id="thumbnail" name="inv_thumbnail" required value="<%= locals.inv_thumbnail %>">
+  </div>
+
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="inv_price" required value="<%= locals.inv_price %>">
+  </div>
+  <div>
+    <label for="miles">Miles:</label>
+    <input type="number" id="miles" name="inv_miles" required value="<%= locals.inv_miles %>">
+  </div>
+  <div>
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="inv_color" required value="<%= locals.inv_color %>">
+  </div>
+  <div>
+    <label for="classification">Classification:</label>
+    <select id="classification" name="classification_id" required>
+      <% for(var i=0; i<classification.rowCount; i++) {%>
+        <% var selected = ( locals.classification_id == classification.rows[i].classification_id ) ? "selected" : ""; %>
+
+        <option value="<%= classification.rows[i].classification_id %>" <%= selected %> >
+          <%= classification.rows[i].classification_name %>
+        </option>
+      <% } %>
+    </select>
+  </div>
+  <div>
+    <button type="submit" disabled>Update Vehicle</button>
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
+  </div>
+
+</form>
+
+<script src="../../js/inventory-management.js"></script>

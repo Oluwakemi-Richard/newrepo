@@ -1,26 +1,37 @@
-<h1>
-    <%= title %>
-</h1>
-<%- messages() %>
+<h1><%= title %></h1>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <%  }) %>
+  </ul>
+<% } %>
+
+
+<% if (flash) { %>
+  <% if (flash.notice) { %>
+    <ul class="notice">
+      <% flash.notice.forEach(msg => { %>
+        <li><%= msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+<% } %>
 <form id="loginForm" action="/account/login" method="post">
-    <div class="auth-forms">
-      <fieldset>
-        <label for="account_email"><b>Email Address:</b></label>
-      <input type="email" name="account_email" required>
-  
-      <label for="account_password"><b>Password:</b></label>
-      <input type="password" name="account_password" required>
-          
-      <button type="submit">Login</button>
-    </fieldset>
-      <!-- <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label> -->
-      <span class="form_text">No account? <a href="./register">Sign-up</a></span>
-    </div>
-  
-    <!-- <div class="fogotpw" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div> -->
-  </form>
+  <div class="auth-forms">
+    <fieldset>
+      <label for="account_email"><b>Email Address:</b></label>
+    <input type="email" name="account_email" required>
+
+    <label for="account_password"><b>Password:</b></label>
+    <input type="password" name="account_password" required>
+        
+    <button type="submit">Login</button>
+  </fieldset>
+    <!-- <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label> -->
+    <span class="form_text">No account? <a href="./register">Sign-up</a></span>
+  </div>
+</form>

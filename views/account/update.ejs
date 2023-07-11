@@ -1,0 +1,51 @@
+<h1><%= title %></h1>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+  <% if (flash) { %>
+    <% if (flash.notice) { %>
+      <ul class="notice">
+        <% flash.notice.forEach(msg => { %>
+          <li><%= msg %></li>
+        <%  }) %>
+      </ul>
+    <% } %>
+  <% } %>
+
+
+
+<form action="/account/account-update" method="POST" onsubmit="return validateForm()">
+    <div>
+      <label for="account_firstname">First Name:</label>
+      <input type="text" id="firstName" name="account_firstname" required value="<%= locals.account_firstname %>">
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="account_lastname" required value="<%= locals.account_lastname %>">
+    </div>
+    <div>
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="account_email" required value="<%= locals.account_email %>">
+    </div>
+    <button type="submit">Update Account</button>
+    <input type="hidden" name="account_id"
+    <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+    <% } %>>
+  </form>
+
+  <form action="/account/change-password" method="POST">
+    <div>
+      <label for="password">Change your password:</label>
+      <input type="password" id="password" name="account_password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$" placeholder="12+ chars, upper, number, and special" required>
+    </div>
+    <button type="submit">change password</button>
+    <input type="hidden" name="account_id"
+    <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+    <% } %>>
+  </form>

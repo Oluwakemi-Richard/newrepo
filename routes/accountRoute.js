@@ -1,32 +1,68 @@
-// Needed Resources 
-const express = require("express")
-const router = new express.Router() 
-const accountController = require("../controllers/accountController")
-const utilities = require("../utilities")
-const regValidate = require('../utilities/account-validation')
+const express = require('express');
+const router = express.Router();
+const accountController = require('../controllers/accountController');
+const regValidate = require('../utilities/account-validation');
+const utilities = require('../utilities');
 
-//Deliver login view
-router.get("/login", utilities.handleErrors(accountController.buildLogin))
-//Register route
-router.get("/register", utilities.handleErrors(accountController.buildRegister))
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+
+router.get('/login', utilities.handleErrors(accountController.buildLogin));
+router.get('/register', utilities.handleErrors(accountController.buildRegister));
 
 
-// router.post('/register', utilities.handleErrors(accountController.registerAccount))
+router.get('/', utilities.checkLogin, utilities.handleErrors(accountController.buildAccManagement));
 
-// Process the registration data
+
 router.post(
     "/register",
-    regValidate.registationRules(),
-    regValidate.checkRegData,
+    regValidate.validate.registrationRules(),
+    regValidate.validate.checkRegData,
     utilities.handleErrors(accountController.registerAccount)
-  )
-// Process the login attempt
+  );
+
 router.post(
     "/login",
-    (req, res) => {
-      res.status(200).send('login process')
-    }
-  )
+    regValidate.logValidate.loginRules(),
+    regValidate.logValidate.checkLoginData,
+    utilities.handleErrors(accountController.accountLogin)
+  );
 
+router.get('/logout', utilities.handleErrors(accountController.accountLogout));
+
+router.get(
+  "/update/:account_id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountUpdate)
+);
+
+router.post(
+  "/account-update",
+  utilities.checkLogin,
+  regValidate.validate.updateAccountRules(),
+  regValidate.validate.checkUpdatedData,
+  utilities.handleErrors(accountController.accountUpdate)
+);
+
+router.post(
+  "/change-password",
+  utilities.checkLogin,
+    // regValidate.validate.changePasswordRules,
+  utilities.handleErrors(accountController.changePassword)
+);
+
+
+
+
+router.get("/delete-confirm/:account_id",
+    utilities.checkLogin,
+    utilities.handleErrors(accountController.deleteAccount)
+)
+
+router.post("/delete-confirm/",
+    utilities.checkLogin,
+    utilities.handleErrors(accountController.removeAccount)
+)
 
 module.exports = router;
+

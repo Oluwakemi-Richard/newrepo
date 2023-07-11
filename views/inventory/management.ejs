@@ -1,5 +1,13 @@
 <h1><%= title %></h1>
 
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
 <% if (flash) { %>
   <% if (flash.notice) { %>
     <ul class="notice">
@@ -9,7 +17,27 @@
     </ul>
   <% } %>
 <% } %>
+
 <div class="container">
   <span><a href="/inv/add-classification">Add Classification</a></span><br>
   <span><a href="/inv/add-inventory">Add Inventory</a></span>
 </div>
+<h2>Manage Inventory</h2>
+<p>Choose a classification to see those inv items</p>
+
+
+<div>
+  <label for="classification">Classification:</label>
+  <select id="classification">
+    <% for(var i=0; i<classification.rowCount; i++) {%>
+      <option value="<%= classification.rows[i].classification_id %>">
+        <%= classification.rows[i].classification_name %>
+      </option>
+    <% } %>
+  </select>
+</div>
+
+<table id="inventoryDisplay"></table>
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+<script src="../../js/inventory.js"></script>
