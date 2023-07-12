@@ -205,6 +205,9 @@ textarea{
   margin:1em 2em;
   padding:2em;
 }
+input[type='checkbox']{
+  max-width: 5%;
+}
 
 
 /* Extra small devices (phones, 600px and down) */
