@@ -208,6 +208,11 @@ textarea{
 input[type='checkbox']{
   max-width: 5%;
 }
+#pwdLink{
+  color:black;
+  font-size:0.6em;
+  float:right;
+}
 
 
 /* Extra small devices (phones, 600px and down) */

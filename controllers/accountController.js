@@ -84,14 +84,13 @@ async function accountLogin(req, res) {
   const { account_email, account_password } = req.body
   const accountData = await Account.getAccountByEmail(account_email)
   if (!accountData) {
-   req.flash("notice", "Please check your credentials and try again.")
-   res.status(400).render("account/login", {
-    title: "Login",
-    nav,
-    errors: null,
-    account_email,
-   })
-  return
+    req.flash("notice", "Please check your credentials and try again.")
+    res.status(400).render('account/login', {
+      title: 'Login',
+      nav,
+      flash: req.flash(),
+      errors: null,
+    });
   }
   try {
    if (await bcrypt.compare(account_password, accountData.account_password)) {
