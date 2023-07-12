@@ -47,7 +47,8 @@ router.post(
 router.post(
   "/change-password",
   utilities.checkLogin,
-    // regValidate.validate.changePasswordRules,
+  regValidate.validate.changePasswordRules(),
+  regValidate.validate.checkPasswordData,
   utilities.handleErrors(accountController.changePassword)
 );
 

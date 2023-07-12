@@ -125,7 +125,7 @@ async function buildAccountUpdate(req, res, next) {
   const { account_id } = req.params;
   const data = await Account.getAccountById(account_id);
   res.render("account/update", {
-    title: "Edit Account",
+    title: "Modify Account Details",
     nav,
     flash: req.flash(),
     errors: null,
@@ -162,7 +162,7 @@ async function buildAccountUpdate(req, res, next) {
   else {
     req.flash("notice", "Sorry, the update failed.");
     res.status(501).render("account/update/", {
-      title: "Edit Account",
+      title: "Modify Account Details",
       nav,
       errors: null,
       account_firstname,
@@ -183,7 +183,7 @@ async function changePassword(req, res) {
   }catch (error) {
     req.flash("notice", "Sorry, there was an error changing your password.");
     res.status(500).render("account/update", {
-      title: "Edit Account",
+      title: "Modify Account Details",
       nav,
       errors: null,
       account_id,
@@ -199,7 +199,7 @@ async function changePassword(req, res) {
   else {
     req.flash("notice", "Sorry, the password update failed.");
     res.status(501).render("account/update", {
-      title: "Edit Account",
+      title: "Modify Account Details",
       nav,
 
       flash: req.flash(),
@@ -242,7 +242,7 @@ async function deleteAccount(req, res, next) {
   res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
   const itemName = `${accountData.account_firstname} ${accountData.account_lastname}`;
   res.status(201).render("account/delete-confirm", {
-      title: "Delete " + itemName,
+      title: "Delete " + itemName+"'s account",
       nav,
       flash: req.flash(),
       errors: null,

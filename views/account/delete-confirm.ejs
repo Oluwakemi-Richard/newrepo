@@ -21,7 +21,7 @@
 
 
 
-  <form id="deleteForm" action="/account/delete-confirm" method="POST" onsubmit="return validateForm()">
+  <form id="deleteForm" action="/account/delete-confirm" method="POST">
     <div class="auth-forms">
         <fieldset>
             <label for="firstname">First Name:</label>
@@ -33,7 +33,7 @@
             <label for="email">Email:</label>
       <input type="email" id="email" name="account_email" value="<%= locals.account_email %>" readonly>
 
-      <p>Confirm Account Deletion - This action cannot be undone.</p>
+      <p>Confirm Delete- Your account will be deleted permanently once the button is clicked.</p>
       <div>
         <button type="submit">Delete Account</button>
         <input type="hidden" name="account_id"

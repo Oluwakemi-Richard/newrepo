@@ -198,6 +198,13 @@ textarea{
   width:90%;
   padding:12px 20px;
 }
+.body-content {
+  max-width: 100%;
+  background-color: #ffffff;
+  border: 1px solid blue;
+  margin:1em 2em;
+  padding:2em;
+}
 
 
 /* Extra small devices (phones, 600px and down) */
@@ -249,6 +256,13 @@ textarea{
     #classification_list{
       width:87%;
     }
+    .body-content {
+      margin:1em;
+      padding:1em;
+    }
+    .auth-forms span{
+      font-size: 0.65em;
+    }
 }
 
 /*Mobile View is the default*/
@@ -273,9 +287,6 @@ textarea{
     .container {
       max-width: 100%;
       background-color: #ffffff;
-    }
-    
-    .container{
       border: 1px solid blue;
       margin:1em 3em;
     }

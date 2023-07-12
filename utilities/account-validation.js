@@ -89,6 +89,24 @@ validate.registrationRules = () => {
         .withMessage("Password does not meet requirements."),
     ]
   }
+
+  validate.checkPasswordData = async (req, res, next) => {
+    const { account_password, account_id } = req.body
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      res.render("account/update", {
+        errors,
+        title: "Modify Account Details",
+        nav,
+        flash: req.flash(),
+        account_password,
+        account_id,
+      })
+      return
+    }
+    next()
+  }
   /* ******************************
  * Check data and return errors or continue to registration
  * ***************************** */
@@ -122,7 +140,7 @@ validate.checkRegData = async (req, res, next) => {
       let nav = await utilities.getNav()
       res.render("account/update", {
         errors,
-        title: "Edit Account",
+        title: "Modify Account Details",
         nav,
         flash: req.flash(),
         account_firstname,

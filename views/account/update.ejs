@@ -20,16 +20,17 @@
 
 
 
-<form action="/account/account-update" method="POST" onsubmit="return validateForm()">
+<form id="updateAccountForm" action="/account/account-update" method="POST">
     <div class="auth-forms">
+        <h2>Account Update</h2>
         <fieldset>
-            <label for="account_firstname">First Name:</label>
+            <label for="firstName">First Name:</label>
       <input type="text" id="firstName" name="account_firstname" required value="<%= locals.account_firstname %>">
       <label for="lastName">Last Name:</label>
       <input type="text" id="lastName" name="account_lastname" required value="<%= locals.account_lastname %>">
       <label for="email">Your Email:</label>
       <input type="email" id="email" name="account_email" required value="<%= locals.account_email %>">
-      <button type="submit">Update Account</button>
+      <button disabled type="submit">Update Account</button>
       <input type="hidden" name="account_id"
     <% if(locals.account_id) { %> value="<%= locals.account_id %>"
     <% } %>>
@@ -37,15 +38,24 @@
     </div>
     
   </form>
+  <br>
 
   <form action="/account/change-password" method="POST">
-    <div>
-      <label for="password">Change your password:</label>
-      <input type="password" id="password" name="account_password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$" required>
-      <div><i>Passwords must contain at least 12 characters, and include 1 capital letter, 1 number and 1 special character</i></div>
+    <div class="auth-forms">
+        <h2>Change Password</h2>
+        <fieldset>
+            <label for="password">Change your password:</label>
+            <input type="password" id="password" name="account_password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$" required>
+            <div>
+                <span><i>Entering a new password will change the existing password</i></span><br>
+                <span><i>Password must contain at least 12 characters, and include 1 capital letter, 1 number and 1 special character</i></span>
+            </div>
+            <button type="submit">change password</button>
+            <input type="hidden" name="account_id"
+            <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+            <% } %>>
+        </fieldset>
     </div>
-    <button type="submit">change password</button>
-    <input type="hidden" name="account_id"
-    <% if(locals.account_id) { %> value="<%= locals.account_id %>"
-    <% } %>>
   </form>
+
+  <script src="../../js/acc-management.js"></script>

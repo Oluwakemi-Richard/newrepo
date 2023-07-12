@@ -37,13 +37,6 @@
       </fieldset>  
       <span class="form_text">Already have an account? <a href="./login">Log in</a></span>
     </div>
-    <% if (errors) { %>
-        <ul class="notice">
-       <% errors.array().forEach(error => { %>
-         <li><%= error.msg %></li>
-      <%  }) %>
-       </ul>
-      <% } %>
   
     <!-- <div class="fogotpw" style="background-color:#f1f1f1">
       <button type="button" class="cancelbtn">Cancel</button>
