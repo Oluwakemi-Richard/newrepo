@@ -131,6 +131,18 @@ async function removeAccount(account_id){
   }
 }
 
+async function registerAccountByAdmin(account_firstname, account_lastname, account_email, account_password, account_type){
+  try {
+    const data = "INSERT INTO account (account_firstname, account_lastname, account_email, account_password, account_type) VALUES ($1, $2, $3, $4, $5) RETURNING *"
+    return await pool.query(data, [account_firstname, account_lastname, account_email, account_password, account_type])
+  } catch (error) {
+    return error.message
+  }
+}
+async function getAccountTypes(){
+  return await pool.query("SELECT distinct account_type FROM public.account")
+}
+
 
 
   module.exports = {
@@ -143,4 +155,6 @@ async function removeAccount(account_id){
     updateAccount,
     changePassword,
     removeAccount,
+    registerAccountByAdmin,
+    getAccountTypes
   };

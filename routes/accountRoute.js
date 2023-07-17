@@ -65,5 +65,23 @@ router.post("/delete-confirm/",
     utilities.handleErrors(accountController.removeAccount)
 )
 
+router.get('/manage-roles',
+utilities.checkLogin,
+utilities.checkAuthorizarion,
+ utilities.handleErrors(accountController.buildRegisterByAdmin));
+
+ router.post(
+  "/registerbyadmin",
+  utilities.checkLogin,
+  utilities.checkAuthorizarion,
+   regValidate.validate.registrationRules(),
+   regValidate.validate.checkRegData,
+  utilities.handleErrors(accountController.registerAccountByAdmin)
+);
+
+
+
+ 
+
 module.exports = router;
 

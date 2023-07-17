@@ -19,6 +19,11 @@
       <h3>Inventory Management</h3>
       <p><a href="/inv">Manage Inventory</a></p>
     <% } %>
+    <% if (locals.accountData.account_type === "Admin") { %>
+      <h3>Account Management</h3>
+      <p><a href="/account/manage-roles">Assign Roles</a></p>
+    <% } %>
+    
     </div>
     
     <% if (flash) { %>

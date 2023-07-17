@@ -194,7 +194,7 @@ textarea{
   border: 2px solid #ccc;
   border-radius: 4px;
 }
-#classification_list{
+#classification_list, #account_type{
   width:90%;
   padding:12px 20px;
 }
@@ -213,7 +213,9 @@ input[type='checkbox']{
   font-size:0.6em;
   float:right;
 }
-
+/* #new-employee{
+  display: none;
+} */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 568px) {
@@ -263,6 +265,9 @@ input[type='checkbox']{
     }
     #classification_list{
       width:87%;
+    }
+    #account_type{
+      width:83%;
     }
     .body-content {
       margin:1em;
@@ -324,7 +329,7 @@ input[type='checkbox']{
       padding-left:1.8em;
     }
     textarea{width:100%;}
-    #classification_list{
+    #classification_list, #account_type{
       width:97%;
     }
     

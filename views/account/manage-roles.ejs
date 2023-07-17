@@ -1,0 +1,70 @@
+
+<div>
+    <h1><%= title %></h1>
+
+    <% if (errors) { %>
+      <ul class="notice">
+        <% errors.array().forEach(error => { %>
+          <li><%= error.msg %></li>
+        <%  }) %>
+      </ul>
+    <% } %>
+    
+    <div class="body-content">
+        <div>
+            <p>You can register a new account here and assign roles</p>
+            <p><a id="newemplink" href="#new-employee">Register New Employee</a></p>
+        </div>
+        <div id="new-employee">
+            <form action="/account/registerbyadmin" method="post">
+                <div class="auth-forms">
+            
+                  <fieldset>
+                    <label for="account_firstname"><b>First Name:</b></label>
+                    <input type="text" name="account_firstname" id="account_firstname" required value="<%= locals.account_firstname %>">
+                
+                    <label for="account_lastname"><b>Last Name:</b></label>
+                    <input type="text" name="account_lastname" id="account_lastname" required>
+            
+                    <label for="account_email"><b>Email Address:</b></label>
+                    <input type="email" name="account_email" id="account_email" required>
+              
+                    <label for="account_password"><b>Password:</b></label>
+                    <input type="password" class="password" name="account_password" id="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                    <a href="#account_password" id="pwdLink" onclick="showPw()" class="btn">Show</a>
+                    <div><i>Passwords must contain at least 12 characters, and include 1 capital letter, 1 number and 1 special character</i></div>
+                    
+                    <div>
+                      <label for="account_type"><b>Account type:</b></label>
+                    <!-- <input type="text" name="account_type" id="account_type" required> -->
+                    <select id="account_type" name="account_type" required>
+                        <option value="" disabled selected hidden>Select a Account type</option>
+                      <% for(var i=0; i<accountTypes.rowCount; i++) {%>
+                        <option value="<%= accountTypes.rows[i].account_type %>">
+                          <%= accountTypes.rows[i].account_type %>
+                        </option>
+                      <% } %>
+                    </select>
+                    </div>
+                    
+                    <button type="submit">Register</button>
+                  </fieldset>  
+                </div>
+              </form>
+
+        </div>
+       
+    </div>
+    
+    <% if (flash) { %>
+      <% if (flash.notice) { %>
+        <ul class="notice">
+          <% flash.notice.forEach(msg => { %>
+            <li><%= msg %></li>
+          <%  }) %>
+        </ul>
+      <% } %>
+    <% } %>
+</div>
+
+<script src="../../js/script.js"></script>

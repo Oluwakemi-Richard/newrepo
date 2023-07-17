@@ -6,3 +6,11 @@ function showPw() {
       x.type = "password";
     }
   }
+
+  
+
+document.getElementById("new-employee").style.display = "none";
+
+document.getElementById("newemplink").onclick = function() {
+  document.getElementById("new-employee").style.display = "block";
+}
